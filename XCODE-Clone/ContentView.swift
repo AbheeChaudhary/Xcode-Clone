@@ -236,6 +236,7 @@ struct ContentView: View {
             if showConsole {
                 VStack {
                     HStack {
+                        Spacer()
                         Text("Console")
                             .font(.headline)
                             .padding()
@@ -299,9 +300,12 @@ struct ContentView: View {
                     showConsole.toggle()
                 }
             }) {
+                Spacer()
                 Text(showConsole ? "Hide Console" : "Show Console")
                     .padding()
                     .foregroundColor(.blue)
+                    
+                    
             }
         }
         .onAppear {
