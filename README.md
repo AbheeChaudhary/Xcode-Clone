@@ -17,6 +17,12 @@ This project is a SwiftUI-based clone of the Xcode IDE interface, showcasing nav
 - **Customizable Layout**: Resize the navigation area and console by dragging the edges. The layout persists across app launches.
 - **Dark and Light Modes**: The app automatically adapts to light or dark mode based on the system settings.
 
+Doing this project I have learned so much even though I had difficulties due to various this such as the tab for storing filenames and switching between them still is a challenge for me. But if given enough time I can tackle and conquer that as well.
+Thank you to CarMaxle for the opportunity to provide me with the assignment and fueling the coder in me even after exams
+
+
+
+
 ## Requirements
 
 - Xcode 15.0 or later
