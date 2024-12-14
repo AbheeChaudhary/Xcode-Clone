@@ -140,7 +140,7 @@ struct ContentView: View {
                     .background(Color.gray.opacity(0.1))
                     .overlay(
                         Rectangle()
-                            .frame(width: 5)
+                            .frame(width: 10)
                             .foregroundColor(Color.gray.opacity(0.3))
                             .gesture(
                                 DragGesture()
@@ -159,7 +159,7 @@ struct ContentView: View {
                             },
                         alignment: .trailing
                     )
-                    .animation(.easeInOut, value: navigatorWidth)
+                    
                 }
                 
                 VStack {
@@ -304,8 +304,6 @@ struct ContentView: View {
                 Text(showConsole ? "Hide Console" : "Show Console")
                     .padding()
                     .foregroundColor(.blue)
-                    
-                    
             }
         }
         .onAppear {
