@@ -25,13 +25,10 @@ This project is a SwiftUI-based clone of the Xcode IDE interface, showcasing nav
 
 ## Installation
 
-Clone this repo and build using XCODE15+
-                                                                                                                                                                                    
-                                                                                                                                                                                    
-                                                                                                                                                                                    
+Clone this repo and build using XCODE15+                                                                                                                                       
                                                                                                                                                                                     This also has Advanced features such as SavedStates to remember the previous state of all the user interactions when reopening.
-                                                                                                                                                                                    -> It was difficult to implement it and I honestly had to do alot of google search and stackoverflow to make it work. But I still don't understand most of the code of its implementation
-                                                                                                                                                                                    
-                                                                                                                                                                
+                                                                                                                                                                                    -> It was difficult to implement it and I honestly had to do alot of google search and stackoverflow to make it work. But I still don't understand most of the code of its implementation                    
                                                                                                                                                                                     -> Dark Mdoe :
                                                                                                                                                                                         Dark mode is also implemented as an advanced feature
+
+
