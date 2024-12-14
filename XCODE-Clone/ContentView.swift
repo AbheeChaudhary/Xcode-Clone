@@ -23,21 +23,53 @@ struct ContentView: View {
 
     var body: some View {
         VStack(spacing : 0){
-            HStack{
-                Text("Run")
-                    .padding()
+            HStack(spacing:0){
+                Button(action: {
+                    statusMessage = "Stop Clicked"
+                }){
+                    Image(systemName: "stop.fill")
+                        .foregroundColor(Color.white.opacity(0.6))
+                        .padding()
+                        .scaleEffect(1.8)
+                        
+                }
+                
+                Button(action: {
+                    statusMessage = "Run Clicked"
+                }){
+                    Image(systemName: "play.fill")
+                        
+                        .foregroundColor(Color.white.opacity(0.6))
+                        .padding()
+                        .scaleEffect(1.8)
+                        
+                }
+                
+                
                 Spacer()
-                Text("Tool Bar")
+                Text("Xcode Clone")
                     .font(.headline)
-                    .padding()
+                    
                 Spacer()
-                Text("Settings")
-                    .padding()
+                Button(action: {
+                    statusMessage = "Settings clicked!"
+                }) {
+                    Image(systemName: "gearshape.fill")
+                        .foregroundColor(.blue)
+                        .padding()
+                        .scaleEffect(1.8)
+                }
                 
                 
             }
             .frame(height: 40)
-            .background(Color.gray)
+            .background(Color.gray.opacity(0.2))
+            
+            Text(statusMessage)
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.gray.opacity(0.03))
+            
         }
     }
 
