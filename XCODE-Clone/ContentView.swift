@@ -16,6 +16,10 @@ struct ContentView: View {
     // state variables start
     
     @State private var statusMessage: String = "Ready"
+    @State private var showNavigator: Bool = true
+    // making it resizeable
+    @State private var navigatorWidth : CGFloat = 200 // default value
+    @State private var selectedFile = ""
     
     
     
@@ -25,12 +29,23 @@ struct ContentView: View {
         VStack(spacing : 0){
             HStack(spacing:0){
                 Button(action: {
+                    showNavigator.toggle()
+                    statusMessage = showNavigator ? "Navigator Opened" : "Navigator Closed"
+                }){
+                    Image(systemName: "sidebar.left")
+                        .foregroundColor(.white.opacity(0.6))
+                        .padding()
+                        .scaleEffect(1.5)
+                        
+                }
+                
+                Button(action: {
                     statusMessage = "Stop Clicked"
                 }){
                     Image(systemName: "stop.fill")
-                        .foregroundColor(Color.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.6))
                         .padding()
-                        .scaleEffect(1.8)
+                        .scaleEffect(1.3)
                         
                 }
                 
@@ -39,9 +54,9 @@ struct ContentView: View {
                 }){
                     Image(systemName: "play.fill")
                         
-                        .foregroundColor(Color.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.6))
                         .padding()
-                        .scaleEffect(1.8)
+                        .scaleEffect(1.3)
                         
                 }
                 
@@ -52,18 +67,78 @@ struct ContentView: View {
                     
                 Spacer()
                 Button(action: {
-                    statusMessage = "Settings clicked!"
-                }) {
-                    Image(systemName: "gearshape.fill")
-                        .foregroundColor(.blue)
+                    statusMessage = "Show Libary clicked"
+                }){
+                    Image(systemName: "plus")
                         .padding()
-                        .scaleEffect(1.8)
+                        .foregroundColor(.white.opacity(0.6))
+                        .scaleEffect(1.3)
+                }
+                Button(action: {
+                    statusMessage = "Inspectors clicked"
+                }) {
+                    Image(systemName: "sidebar.right")
+                        .foregroundColor(.white.opacity(0.6))
+                        .padding()
+                        .scaleEffect(1.6)
                 }
                 
                 
             }
             .frame(height: 40)
             .background(Color.gray.opacity(0.2))
+            // creating the main workspace and the sidepanes
+            HStack(spacing:0){
+                if showNavigator{
+                    VStack(alignment: .leading){
+                        Text("Navigator Area")
+                            .font(.headline)
+                            .padding(.top)
+                        Divider()
+                        ForEach(1..<6){ index in
+                            Text("File \(index).swift")
+                                .padding(.vertical,5)
+                                .padding(.horizontal)
+                                .background(selectedFile == "File \(index).swift" ? Color.blue : Color.clear)
+                                .onTapGesture {
+                                    selectedFile = "File \(index).swift"
+                                    statusMessage = "Selected \(selectedFile)"
+                                }
+                            
+                        }
+                        Spacer()
+                    }
+                    .frame(width : navigatorWidth)
+                    .padding(.horizontal)
+                    .background(Color.gray.opacity(0.1))
+                    .overlay(
+                        Rectangle()
+                            .frame(width : 5)
+                            .foregroundColor(Color.gray.opacity(0.3))
+                            .gesture(
+                                DragGesture()
+                                    .onChanged { value in
+                                        navigatorWidth =  max(100,navigatorWidth + value.translation.width)
+                                        
+                                    }
+                                
+                            ),
+                        alignment: .trailing
+                    )
+                }
+                
+                VStack{
+                    Text("Editor Area")
+                        .font(.headline)
+                        .padding()
+                    Spacer()
+                }
+                .frame(maxWidth : .infinity)
+                .background(Color.white)
+                
+            }
+            .frame(maxHeight : .infinity)
+            
             
             Text(statusMessage)
                 .padding()
@@ -71,6 +146,9 @@ struct ContentView: View {
                 .background(Color.gray.opacity(0.03))
             
         }
+        
+        
+        
     }
 
     
